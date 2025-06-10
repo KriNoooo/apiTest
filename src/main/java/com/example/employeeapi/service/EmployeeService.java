@@ -2,6 +2,9 @@ package com.example.employeeapi.service;
 
 import com.example.employeeapi.entity.Employee;
 import com.example.employeeapi.repository.EmployeeRepository;
+import org.springframework.data.domain.Pageable;
+
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -41,4 +44,11 @@ public class EmployeeService {
     public void deleteEmployee(Long id) {
         repository.deleteById(id);
     }
+     public Page<Employee> getEmployees(Pageable pageable) {
+        return repository.findAll(pageable);
+    }
+    public String hello() {
+        return "Hello from EmployeeService";
+    }
+    
 }
